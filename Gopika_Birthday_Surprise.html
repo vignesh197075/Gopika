@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#190d2c">
+<title>Happy Birthday, Gopika!</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    min-height: 100vh; overflow-x: hidden; color: #fff8f2;
+    font-family: Georgia, "Times New Roman", serif;
+    background: radial-gradient(circle at 50% 15%, #57336d 0, #241536 42%, #100b20 100%);
+    display: grid; place-items: center; padding: 28px 16px;
+  }
+  .glow { position: fixed; width: 260px; height: 260px; border-radius: 50%; filter: blur(70px); opacity: .35; pointer-events:none; }
+  .glow.one { background:#ff78b7; top:-90px; left:-80px; }
+  .glow.two { background:#8d7aff; bottom:-100px; right:-70px; }
+  .card {
+    width: min(100%, 520px); position: relative; text-align: center;
+    padding: 42px 24px 38px; border: 1px solid rgba(255,220,235,.35);
+    border-radius: 28px; background: linear-gradient(145deg, rgba(255,255,255,.13), rgba(255,255,255,.045));
+    box-shadow: 0 24px 80px rgba(0,0,0,.35); backdrop-filter: blur(10px);
+    animation: rise 1s ease both;
+  }
+  .eyebrow { letter-spacing: .28em; text-transform: uppercase; font: 11px Arial,sans-serif; color:#ffd4e6; }
+  h1 { margin: 18px 0 8px; font-size: clamp(48px, 12vw, 76px); line-height: .98; color:#ffe0ed; text-shadow:0 5px 25px #ff6ca766; }
+  .name { font-size: clamp(40px, 10vw, 60px); font-style: italic; color:#ffd18a; margin: 8px 0 20px; }
+  .date { display:inline-block; padding:9px 18px; border:1px solid #f5c6d8aa; border-radius:99px; color:#ffe8f0; font: 13px Arial,sans-serif; letter-spacing:.12em; }
+  .cake { font-size: 58px; margin: 22px 0 10px; animation: bob 2.2s ease-in-out infinite; }
+  .message { max-width: 390px; margin: 14px auto 0; color:#fff0f5; font-size:18px; line-height:1.7; }
+  .signature { margin-top:25px; color:#ffd18a; font-style:italic; font-size:20px; }
+  .button {
+    margin-top:26px; border:0; border-radius:99px; padding:13px 23px; cursor:pointer;
+    background:linear-gradient(90deg,#ff9fc5,#ffd18a); color:#32152e;
+    font-weight:bold; font-size:14px; box-shadow:0 8px 24px #ff9fc544;
+  }
+  .hidden-note { display:none; margin:20px auto 0; max-width:360px; color:#ffe5ef; line-height:1.65; animation: rise .7s ease both; }
+  .hidden-note.show { display:block; }
+  .sparkle { position:fixed; top:-30px; color:#ffe3a8; pointer-events:none; animation: fall linear forwards; text-shadow:0 0 10px #fff; }
+  .footer { margin-top:30px; color:#d8c1d8; font:11px Arial,sans-serif; letter-spacing:.08em; }
+  @keyframes rise { from { opacity:0; transform:translateY(22px) scale(.98); } to { opacity:1; transform:translateY(0) scale(1); } }
+  @keyframes bob { 0%,100% { transform:translateY(0) rotate(-3deg); } 50% { transform:translateY(-9px) rotate(3deg); } }
+  @keyframes fall { to { transform:translateY(110vh) rotate(540deg); opacity:0; } }
+  @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; } }
+</style>
+</head>
+<body>
+<div class="glow one"></div><div class="glow two"></div>
+<main class="card">
+  <div class="eyebrow">A little celebration just for you</div>
+  <div class="cake" aria-hidden="true">🎂</div>
+  <h1>Happy<br>Birthday</h1>
+  <div class="name">Gopika</div>
+  <div class="date">NOVEMBER 7 • YOUR SPECIAL DAY</div>
+  <p class="message">May your day sparkle with happiness, your heart stay full of joy, and the year ahead bring you beautiful surprises.</p>
+  <button class="button" id="wishButton" type="button">Open your little surprise ✨</button>
+  <p class="hidden-note" id="note">You deserve all the lovely things life has to offer. Keep shining, keep smiling, and never stop being wonderfully you! 💖</p>
+  <div class="signature">With lots of warm wishes ♡</div>
+  <div class="footer">MADE ESPECIALLY FOR GOPIKA</div>
+</main>
+<script>
+  const button = document.getElementById('wishButton');
+  const note = document.getElementById('note');
+  button.addEventListener('click', () => {
+    note.classList.toggle('show');
+    button.textContent = note.classList.contains('show') ? 'Hide surprise' : 'Open your little surprise ✨';
+    for (let i = 0; i < 28; i++) {
+      const bit = document.createElement('span');
+      bit.className = 'sparkle';
+      bit.textContent = ['✦','♥','✧','❀'][Math.floor(Math.random()*4)];
+      bit.style.left = Math.random()*100 + 'vw';
+      bit.style.animationDuration = (2.5 + Math.random()*2.5) + 's';
+      bit.style.fontSize = (12 + Math.random()*17) + 'px';
+      document.body.appendChild(bit);
+      setTimeout(() => bit.remove(), 5200);
+    }
+  });
+</script>
+</body>
+</html>
